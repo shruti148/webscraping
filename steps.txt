@@ -1,0 +1,8 @@
+install anaconda https://www.anaconda.com/products/individual
+open conda cmd (in search type anaconda prompt)
+type cd path of the folder where you have unzip downloaded folder(try to keep it on desktop to avoid path errors)
+eg: cd C:\Users\chat
+type: pip install pip
+type:pip install -r requirements.txt 
+type:python run.py
+

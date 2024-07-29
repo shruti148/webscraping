@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block script %}
+
+{% endblock script %}
+
+
+{% block my_content %}
+<style>
+  .container-fluid img {
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+    width: 100%;
+  }
+  .zoom {
+  padding: 50px;
+
+  transition: transform .2s;
+
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+}
+.row{
+vertical-align: middle;
+background-color: white;
+
+}
+  </style>
+<!-- Confirmed, Recovered, Deaths Card -->
+<div class="row">
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>16.3M</h3>
+
+                <p>Total Confirmed</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>13.6M<sup style="font-size: 20px"></sup></h3>
+
+                <p>Total Recovered</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>187K</h3>
+
+                <p>Total Deaths</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+    </div>
+        <div class="row">
+            <div class="chart" id="plotly-global">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div id="plotly-timeseries"></div>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
+<script>
+    var graphs = {{ context.plot_death | safe }};
+    Plotly.plot('plotly-global', graphs, {});
+</script>
+{% endblock my_content %}

@@ -1,0 +1,8 @@
+numpy==1.17.0
+matplotlib==3.2.2
+Flask==1.1.2
+plotly==4.9.0
+pandas
+seaborn
+IPython
+python-dotenv

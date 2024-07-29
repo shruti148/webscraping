@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+{% block script %}
+
+{% endblock script %}
+{% block my_content %}
+
+
+<style>
+  .container-fluid img {
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+    width: 100%;
+  }
+  .zoom {
+  padding: 50px;
+
+  transition: transform .2s;
+
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+}
+.row{
+background-color: white;
+
+}
+
+
+</style>
+
+<div class="row">
+
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>{{context.total_active_per_country}}</h3>
+
+                <p>Total Active</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>{{context.total_recovered_per_country}}<sup style="font-size: 20px"></sup></h3>
+
+                <p>Total Recovered</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <!-- ./col -->
+    <div class="col-sm">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>{{context.total_death_per_country}}</h3>
+
+                <p>Total Deaths</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+</div>
+
+<div class="container-fluid">
+  <centre>
+    <h3 style="text-align:center">{{context.State_name}}</h3>
+    </centre>
+
+    <!-- Placeholder for the altair-->
+    <div class="row">
+
+      <div class="col">
+      </div>
+          <div class="col-6">
+              <!-- Placeholder for map-->
+
+              <!-- <img id="img"  class= "zoom"  style="visibility:visible" display="block"/>
+              <img id="img1"  class= "zoom"  style="visibility:visible" display="block"/>
+              <img id="img2"  class= "zoom"  style="visibility:visible" display="block"/> -->
+
+          </div>
+          <div class="col">
+          </div>
+          </div>
+          <div class="row">
+              <div class="chart" id="plotly-global">
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="chart" id="plotly-global1">
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="chart" id="plotly-global2">
+              </div>
+          </div>
+
+
+        </div>
+
+    </div>
+</div>
+<script>
+  var graphs = {{ context.plot_vul | safe }};
+  Plotly.plot('plotly-global', graphs, {});
+
+  var graphs = {{ context.plot_testing | safe }};
+  Plotly.plot('plotly-global1', graphs, {});
+
+  var graphs = {{ context.plot_poscase | safe }};
+  Plotly.plot('plotly-global2', graphs, {});
+
+        // document.getElementById('img').src="data:image/png;base64,{{ context.plot_vul}}";
+        // document.getElementById('img1').src="data:image/png;base64,{{ context.plot_testing}}";
+        // document.getElementById('img2').src="data:image/png;base64,{{ context.plot_poscase}}";
+
+</script>
+{% endblock my_content %}
